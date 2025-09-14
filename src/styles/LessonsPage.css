@@ -1,0 +1,12 @@
+.lessons-container {
+  display: flex;
+  height: auto;
+}
+
+.lessons-content {
+  flex: 1;
+  padding: 50px;
+  height: auto;
+  background: #f4f2f2;
+  overflow-y: auto;
+}

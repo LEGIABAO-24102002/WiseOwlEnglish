@@ -1,0 +1,42 @@
+
+.sidebar{
+  width: 230px;
+  background:#e3ebe4;
+  border-right:1.5px solid #28782a;
+  padding:16px 12px;
+  position: relative;
+}
+
+
+.logo{
+  display:flex; align-items:center; gap:10px;
+  font-weight:800; font-size:43px; color:#1a7f37;
+  padding:20px 20px; border-radius:22px;
+}
+
+
+.nav{
+  margin-top:8px; padding-top:8px;
+  display:flex; flex-direction:column; gap:6px;
+}
+.nav-item{
+  display:flex; align-items:center; gap:12px;
+  padding:15px 20px; border-radius:10px; color:#27292c; text-decoration:none;
+}
+.nav-item:hover{ background:#cfd4da; }
+.nav-item.active{ background:#add5b5; border:3px solid #1bb33c; }
+
+.nav-ico{ width:22px; text-align:center; opacity:.9; }
+
+/* user card bottom */
+.user-card{
+  position:absolute; left:px; right:12px; bottom:52px;
+  background:#e7f5ea; border:1px solid #bbdfc3; border-radius:14px;
+  display:flex; align-items:center; gap:10px; padding:10px 12px;
+  font-size:14px;
+}
+.user-avatar{
+  width:30px; height:30px; border-radius:50%;
+  background:#1a7f37; display:grid; place-items:center; color:#fff; font-weight:700;
+}
+
