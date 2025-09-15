@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/LessonCard.css";
+import "../../styles/learner/lessonCard.css";
 
 interface LessonCardProps {
   title: string;

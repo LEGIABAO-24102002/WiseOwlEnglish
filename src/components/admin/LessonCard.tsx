@@ -1,6 +1,6 @@
 import React from "react";
 import type { Lesson } from "../../type/lesson";
-import "../../styles/admin.css";
+import "../../styles/learner/lessonCard.css";
 
 /** 
  * Card hiển thị 1 bài học

@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "../../components/Learner/Sidebar";
-import Header from "../../components/Learner/Header";
-import LessonCard from "../../components/Learner/LessonCard";
-import "../../styles/HomePage.css";
+import Sidebar from "../../components/learner/Sidebar";
+import Header from "../../components/learner/Header";
+import LessonCard from "../../components/learner/LessonCard";
+import "../../styles/learner/homePage.css";
 
 const HomePage: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
         <LessonCard subtitle="Lớp 1, Bài học 2" title="My Family" />
         <LessonCard subtitle="Lớp 1, Bài học 3" title="Colors" />
         <LessonCard subtitle="Lớp 1, Bài học 4" title="My Body" />
-        <LessonCard subtitle="Lớp 1, Bài học 5" title="School" locked />
+        <LessonCard subtitle="Lớp 1, Bài học 5" title="School"  />
       </div>
     </div>
   );

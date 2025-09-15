@@ -37,7 +37,6 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import LessonsPage from "./pages/LessonsPage";
 import LessonsPage from "./pages/learner/LessonsPage";
 function App() {
   return (
@@ -50,5 +49,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;

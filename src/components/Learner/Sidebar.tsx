@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/Sidebar.css";
+import "../..//styles/learner/sidebar.css";
 
 type NavKey = "study" | "rank" | "exp" | "profile" | "settings";
 
@@ -13,13 +13,13 @@ export default function Sidebar({ active = "study" }: { active?: NavKey }) {
 
       <nav className="nav">
         <a className={`nav-item ${active==="study" ? "active":""}`} href="#">
-          <span className="nav-ico">🏠</span> <span>Trang chủ</span> 
+          <span className="nav-ico">🏠</span> <span>Học tập</span> 
         </a>
         <a className={`nav-item ${active==="rank" ? "active":""}`} href="#">
           <span className="nav-ico">🏆</span> <span>Bảng xếp hạng</span>
         </a>
         <a className={`nav-item ${active==="exp" ? "active":""}`} href="#">
-          <span className="nav-ico">⚡</span> <span>Điểm kinh nghiệm</span>
+          <span className="nav-ico">⚡</span> <span>Điểm kinh nghiệp</span>
         </a>
         <a className={`nav-item ${active==="profile" ? "active":""}`} href="#">
           <span className="nav-ico">👤</span> <span>Hồ sơ</span>
