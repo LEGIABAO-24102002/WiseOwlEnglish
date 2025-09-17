@@ -1,0 +1,44 @@
+/* 3-vùng: Sidebar trái cố định chiều cao, Header trên sticky, phần content cuộn riêng */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background: #f0f4f8;
+}
+
+.app-sidebar {
+  flex: 0 0 230px;
+  height: 100%;
+  overflow: hidden; /* sidebar tự cuộn bên trong qua css sidebar */
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #e7f5ea;
+  overflow: hidden;
+}
+
+.app-right {
+  flex: 0 0 340px; /* cố định cột phải */
+  height: 100%;
+  overflow-y: auto; /* cho phép thẻ bên phải cuộn độc lập khi dài */
+  background: transparent;
+}
+.app-right::-webkit-scrollbar { display: none; }
+
+/* Dùng style header hiện có; sticky để cố định trên cùng */
+.app-main > .header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* Vùng nội dung chính: chỉ phần này cuộn; ẩn scrollbar webkit */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+.app-content::-webkit-scrollbar { display: none; }

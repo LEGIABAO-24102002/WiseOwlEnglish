@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/learner/NextLevelBox.css";
+import "../../styles/user/NextLevelBox.css";
 
 interface NextLevelBoxProps {
   allLessonsUnlocked: boolean;

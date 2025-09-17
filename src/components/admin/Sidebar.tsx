@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/learner/Sidebar.css"; // phòng khi bạn import Sidebar độc lập
 
 type NavKey = "home" | "list" | "learning" | "games" | "tests" | "settings";

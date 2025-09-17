@@ -36,7 +36,7 @@
 
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../../styles/learner/header.css";
+import "../../styles/user/header.css";
 
 const Header: React.FC = () => {
   const { levelId } = useParams<{ levelId: string }>();

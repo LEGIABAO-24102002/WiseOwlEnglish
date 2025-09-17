@@ -1,5 +1,4 @@
-import React from "react";
-import "../..//styles/learner/sidebar.css";
+import "../..//styles/user/sidebar.css";
 
 type NavKey = "study" | "rank" | "exp" | "profile" | "settings";
 

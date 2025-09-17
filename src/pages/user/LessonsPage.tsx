@@ -1,11 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import LessonCard from "../../components/learner/LessonCard";
-import Sidebar from "../../components/learner/Sidebar";
-import Header from "../../components/learner/Header";
-import NextLevelBox from "../../components/learner/NextLevelBox";
-import "../../styles/learner/lessonsPage.css";
-import "../../styles/learner/AccordionLesson.css";
+import LessonCard from "../../components/user/LessonCard";
+import NextLevelBox from "../../components/user/NextLevelBox";
+import "../../styles/user/lessonsPage.css";
+import "../../styles/user/AccordionLesson.css";
 
 const lessonsData: Record<string, { subtitle: string; title: string }[]> = {
   "1": [
@@ -50,13 +48,14 @@ const lessonsData: Record<string, { subtitle: string; title: string }[]> = {
 const LessonsPage: React.FC = () => {
   const { levelId } = useParams<{ levelId: string }>();
   const currentLevel = levelId || "1";
-  const lessons = lessonsData[currentLevel] || [];
+  const lessons = useMemo(() => lessonsData[currentLevel] || [], [currentLevel]);
 
   // Accordion state: cho phép mở nhiều unit cùng lúc
   const [openUnits, setOpenUnits] = useState<Set<number>>(new Set());
   // refs cho từng unit để scroll vào tầm nhìn khi mở unit kế tiếp
   const unitRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [pendingScrollIndex, setPendingScrollIndex] = useState<number | null>(null);
+  const [highlightedUnitIndex, setHighlightedUnitIndex] = useState<number | null>(null);
 
   // Lưu unit đã hoàn thành (completed) theo level
   const completedUnitsKey = useMemo(() => `woe_completed_units_${currentLevel}`, [currentLevel]);
@@ -134,6 +133,13 @@ const LessonsPage: React.FC = () => {
     }
   }, [pendingScrollIndex, openUnits]);
 
+  // Tự gỡ highlight sau khi animation chạy xong (~1.2s)
+  useEffect(() => {
+    if (highlightedUnitIndex == null) return;
+    const t = setTimeout(() => setHighlightedUnitIndex(null), 1300);
+    return () => clearTimeout(t);
+  }, [highlightedUnitIndex]);
+
   // Mẫu các subLesson trong một unit
   const subLessonTemplate = useMemo(
     () => [
@@ -175,13 +181,7 @@ const LessonsPage: React.FC = () => {
   const showNextLevelBox = nextLevel <= maxLevel;
 
   return (
-    <div className="lessons-container">
-      <Sidebar />
-      <div className="lessons-content">
-        <Header />
-
-        
-
+    <div className="units-scroll">
         {lessons.map((lesson, index) => {
           const isCompleted = completedUnits.has(index);
           const isCurrent = index === currentActiveUnitIndex;
@@ -196,7 +196,7 @@ const LessonsPage: React.FC = () => {
           return (
             <div
               key={index}
-              className="unit-block"
+              className={`unit-block${highlightedUnitIndex === index ? " highlight-enter" : ""}`}
               ref={el => {
                 unitRefs.current[index] = el;
               }}
@@ -292,6 +292,8 @@ const LessonsPage: React.FC = () => {
                                   setOpenUnits(prevOpen => new Set([...prevOpen, nextUnitIndex]));
                                   // Đặt cờ scroll tới unit kế tiếp sau khi render
                                   setPendingScrollIndex(nextUnitIndex);
+                                  // Đặt highlight cho unit vừa mở
+                                  setHighlightedUnitIndex(nextUnitIndex);
                                 }
                               } else {
                                 setSubProgress(prev => ({ ...prev, [index]: next }));
@@ -317,7 +319,6 @@ const LessonsPage: React.FC = () => {
         {showNextLevelBox && (
           <NextLevelBox allLessonsUnlocked={allLessonsUnlocked} nextLevel={nextLevel} />
         )}
-      </div>
     </div>
   );
 };

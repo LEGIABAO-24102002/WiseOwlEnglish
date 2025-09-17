@@ -35,16 +35,17 @@
 
 // export default App
 
-import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import LessonsPage from "./pages/learner/LessonsPage";
+import LessonsPage from "./pages/user/LessonsPage";
+import UserLayout from "./layouts/UserLayout";
 function App() {
   return (
     <Router>
       <Routes>
-        {}
         <Route path="/" element={<Navigate to="/lessons/1" replace />} />
-        <Route path="/lessons/:levelId" element={<LessonsPage />} />
+        <Route element={<UserLayout />}>
+          <Route path="/lessons/:levelId" element={<LessonsPage />} />
+        </Route>
       </Routes>
     </Router>
   );

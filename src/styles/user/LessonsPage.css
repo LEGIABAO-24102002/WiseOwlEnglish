@@ -1,0 +1,69 @@
+/* Palette variables for consistent theming */
+:root {
+  --accent-green: #15971a; /* matches .lesson-card.active background */
+  --accent-green-rgb: 21, 151, 26; /* rgb of #15971a */
+}
+
+.lessons-container {
+  display: flex;
+  height: 100vh; /* cố định theo chiều cao viewport để sidebar đứng yên */
+  background: #f0f4f8;
+}
+
+.lessons-content {
+  flex: 1;
+  padding: 20px;
+  height: 100%;
+  background: #e7f5ea;
+  overflow: hidden; /* ẩn cuộn cấp nội dung, chỉ vùng units-scroll cuộn */
+  display: flex;
+  flex-direction: column; /* Header ở trên, units-scroll chiếm phần còn lại */
+}
+
+/* Header cố định trên cùng của cột nội dung */
+.lessons-content > .header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* Vùng chỉ chứa danh sách Unit: cuộn riêng và ẩn thanh cuộn */
+.units-scroll {
+  flex: 1; /* chiếm phần còn lại dưới Header */
+  overflow-y: auto;
+  padding-top: 12px;
+}
+
+/* Ẩn scrollbar trên các trình duyệt phổ biến */
+.units-scroll::-webkit-scrollbar { display: none; }
+
+/* Highlight cho unit vừa được mở (flash nhẹ viền + nền) */
+.unit-block.highlight-enter {
+  animation: unitHighlight 950ms ease-out 1;
+}
+
+/* Nhấn nhẹ thẻ bài trong lúc highlight (không đổi layout) */
+.unit-block.highlight-enter > .lesson-card {
+  outline: 2px solid rgba(var(--accent-green-rgb), 0.15);
+  outline-offset: 2px;
+  transition: outline-color 0.3s ease;
+}
+
+@keyframes unitHighlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-green-rgb), 0);
+    background: transparent;
+  }
+  22% {
+    box-shadow: 0 0 0 6px rgba(var(--accent-green-rgb), 0.12);
+    background: rgba(var(--accent-green-rgb), 0.05);
+  }
+  60% {
+    box-shadow: 0 0 0 2px rgba(var(--accent-green-rgb), 0.06);
+    background: rgba(var(--accent-green-rgb), 0.03);
+  }
+  100% {
+    box-shadow: none;
+    background: transparent;
+  }
+}

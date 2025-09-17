@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "../../components/learner/Sidebar";
-import Header from "../../components/learner/Header";
-import LessonCard from "../../components/learner/LessonCard";
-import "../../styles/learner/homePage.css";
+import Sidebar from "../../components/user/Sidebar";
+import Header from "../../components/user/Header";
+import LessonCard from "../../components/user/LessonCard";
+import "../../styles/user/homePage.css";
 
 const HomePage: React.FC = () => {
   return (
